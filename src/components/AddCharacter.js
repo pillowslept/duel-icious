@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addCharacter } from '../actions';
@@ -38,7 +39,7 @@ export class AddCharacter extends Component {
           />
         </div>
         <div>
-        <label><strong>Speciality: </strong></label>
+          <label><strong>Speciality: </strong></label>
           <select value={this.state.speciality} onChange={(event) => this.handleChange(event, 'speciality')}>
             <option
               value={''}
@@ -67,16 +68,21 @@ export class AddCharacter extends Component {
   }
 }
 
+AddCharacter.propTypes = {
+  specialities: PropTypes.array,
+  addCharacter: PropTypes.func,
+};
+
 const mapStateToProps = (state) => {
   return {
     specialities: state.specialities,
-  }
-}
+  };
+};
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     addCharacter: addCharacter,
-  }, dispatch)
-}
+  }, dispatch);
+};
 
 export default connect(mapStateToProps, matchDispatchToProps)(AddCharacter);

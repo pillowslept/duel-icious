@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addDuelWinner, finishDuel } from '../actions';
@@ -74,17 +75,23 @@ export class Duel extends Component {
   }
 }
 
+Duel.propTypes = {
+  duel: PropTypes.object,
+  addDuelWinner: PropTypes.func,
+  finishDuel: PropTypes.func,
+};
+
 const mapStateToProps = (state) => {
   return {
     duel: state.duel,
-  }
-}
+  };
+};
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     addDuelWinner: addDuelWinner,
     finishDuel: finishDuel,
-  }, dispatch)
-}
+  }, dispatch);
+};
 
 export default connect(mapStateToProps, matchDispatchToProps)(Duel);

@@ -1,5 +1,5 @@
 const charactersReducer = (state = [], action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'ADD_CHARACTER':
       return [...state, { ...action.payload, selected: false }];
     case 'UPDATE_CHARACTER':
@@ -10,6 +10,6 @@ const charactersReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 export default charactersReducer;

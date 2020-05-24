@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../logo.svg';
@@ -62,12 +63,18 @@ export class NavBar extends Component {
   }
 }
 
+NavBar.propTypes = {
+  specialities: PropTypes.array,
+  characters: PropTypes.array,
+  duelHistory: PropTypes.array,
+};
+
 const mapStateToProps = (state) => {
   return {
     specialities: state.specialities,
     characters: state.characters,
     duelHistory: state.duelHistory,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(NavBar);

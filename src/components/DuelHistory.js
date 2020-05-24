@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const duelHistory = {
@@ -62,10 +63,14 @@ export class DuelHistory extends Component {
   }
 }
 
+DuelHistory.propTypes = {
+  duelHistory: PropTypes.array,
+};
+
 const mapStateToProps = (state) => {
   return {
     duelHistory: state.duelHistory,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(DuelHistory);

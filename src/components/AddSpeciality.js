@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addSpeciality as add } from '../actions';
@@ -43,33 +44,33 @@ export class AddSpeciality extends Component {
         </div>
         <div>
           <label><strong>Velocity: </strong></label>
-            <input
-              type="number"
-              min="1"
-              max="100"
-              value={this.state.velocity}
-              onChange={(event) => this.handleChange(event, 'velocity')}
-            />
+          <input
+            type="number"
+            min="1"
+            max="100"
+            value={this.state.velocity}
+            onChange={(event) => this.handleChange(event, 'velocity')}
+          />
         </div>
         <div>
           <label><strong>Power: </strong></label>
-            <input
-              type="number"
-              min="1"
-              max="100"
-              value={this.state.power}
-              onChange={(event) => this.handleChange(event, 'power')}
-            />
+          <input
+            type="number"
+            min="1"
+            max="100"
+            value={this.state.power}
+            onChange={(event) => this.handleChange(event, 'power')}
+          />
         </div>
         <div>
           <label><strong>Resistance: </strong></label>
-            <input
-              type="number"
-              min="1"
-              max="100"
-              value={this.state.resistance}
-              onChange={(event) => this.handleChange(event, 'resistance')}
-            />
+          <input
+            type="number"
+            min="1"
+            max="100"
+            value={this.state.resistance}
+            onChange={(event) => this.handleChange(event, 'resistance')}
+          />
         </div>
         <button
           disabled={!this.isValidForm()}
@@ -83,10 +84,14 @@ export class AddSpeciality extends Component {
   }
 }
 
+AddSpeciality.propTypes = {
+  add: PropTypes.func,
+};
+
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     add: add,
-  }, dispatch)
-}
+  }, dispatch);
+};
 
 export default connect(null, matchDispatchToProps)(AddSpeciality);

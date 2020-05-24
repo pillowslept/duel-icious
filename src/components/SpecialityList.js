@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 export class SpecialityList extends Component {
@@ -33,10 +34,14 @@ export class SpecialityList extends Component {
   }
 }
 
+SpecialityList.propTypes = {
+  specialities: PropTypes.array,
+};
+
 const mapStateToProps = (state) => {
   return {
     specialities: state.specialities,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(SpecialityList);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { startDuel, updateCharacter } from '../actions';
@@ -34,27 +35,33 @@ export class StartDuel extends Component {
             <strong>{ character.name }</strong> - <span>{ character.speciality }</span>
           </div>
         ))}
-        {characters.length > 1 ? 
+        {characters.length > 1 ?
           <div>
             <button onClick={() => this.startDuel()} disabled={!allowBtn}>Start duel</button>
           </div>
-        : ''}
+          : ''}
       </div>
     );
   }
 }
 
+StartDuel.propTypes = {
+  characters: PropTypes.array,
+  startDuel: PropTypes.func,
+  updateCharacter: PropTypes.func,
+};
+
 const mapStateToProps = (state) => {
   return {
     characters: state.characters,
-  }
-}
+  };
+};
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     startDuel: startDuel,
     updateCharacter: updateCharacter,
-  }, dispatch)
-}
+  }, dispatch);
+};
 
 export default connect(mapStateToProps, matchDispatchToProps)(StartDuel);

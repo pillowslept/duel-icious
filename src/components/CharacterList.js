@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 export class CharacterList extends Component {
@@ -29,10 +30,14 @@ export class CharacterList extends Component {
   }
 }
 
+CharacterList.propTypes = {
+  characters: PropTypes.array,
+};
+
 const mapStateToProps = (state) => {
   return {
     characters: state.characters,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(CharacterList);
