@@ -51,7 +51,7 @@ export class AddCharacter extends Component {
                 key={index}
                 value={speciality.name}
               >
-                { speciality.name } (P{speciality.power}) (V{speciality.velocity}) (R{speciality.resistance})
+                { speciality.name } (V{speciality.velocity}) (P{speciality.power}) (R{speciality.resistance})
               </option>
             ))}
           </select>

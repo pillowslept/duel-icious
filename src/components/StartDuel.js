@@ -28,11 +28,14 @@ export class StartDuel extends Component {
         {characters.map((character, index) => (
           <div className="character" key={index}>
             <input
+              id={'checkbox_' + index}
               checked={character.selected}
               onChange={(event) => this.handleChange(event, character)}
               type="checkbox"
             />
-            <strong>{ character.name }</strong> - <span>{ character.speciality }</span>
+            <label htmlFor={'checkbox_' + index}>
+              <strong>{ character.name }</strong> - <span>{ character.speciality }</span>
+            </label>
           </div>
         ))}
         {characters.length > 1 ?

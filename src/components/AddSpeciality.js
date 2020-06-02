@@ -14,6 +14,8 @@ export class AddSpeciality extends Component {
       velocity: 0,
       resistance: 0,
       id: 1,
+      min: 1,
+      max: 100,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -27,8 +29,15 @@ export class AddSpeciality extends Component {
     this.setState({ name: '', power: 0, velocity: 0, resistance: 0, counter: this.state.id + 1 });
   }
 
+  validateMinMax(property) {
+    return !!property && property <= this.state.max && property >= this.state.min;
+  }
+
   isValidForm() {
-    return !!this.state.name && !!this.state.power && !!this.state.velocity && !!this.state.resistance;
+    return !!this.state.name
+      && this.validateMinMax(this.state.power)
+      && this.validateMinMax(this.state.velocity)
+      && this.validateMinMax(this.state.resistance);
   }
 
   render() {
@@ -43,31 +52,31 @@ export class AddSpeciality extends Component {
           />
         </div>
         <div>
-          <label><strong>Velocity: </strong></label>
+          <label><strong>Velocity*: </strong></label>
           <input
             type="number"
-            min="1"
-            max="100"
+            min={this.state.min}
+            max={this.state.max}
             value={this.state.velocity}
             onChange={(event) => this.handleChange(event, 'velocity')}
           />
         </div>
         <div>
-          <label><strong>Power: </strong></label>
+          <label><strong>Power*: </strong></label>
           <input
             type="number"
-            min="1"
-            max="100"
+            min={this.state.min}
+            max={this.state.max}
             value={this.state.power}
             onChange={(event) => this.handleChange(event, 'power')}
           />
         </div>
         <div>
-          <label><strong>Resistance: </strong></label>
+          <label><strong>Resistance*: </strong></label>
           <input
             type="number"
-            min="1"
-            max="100"
+            min={this.state.min}
+            max={this.state.max}
             value={this.state.resistance}
             onChange={(event) => this.handleChange(event, 'resistance')}
           />
@@ -79,6 +88,7 @@ export class AddSpeciality extends Component {
         >
           Add
         </button>
+        <span className="legend">* Min: { this.state.min } - Max: { this.state.max }</span>
       </div>
     );
   }

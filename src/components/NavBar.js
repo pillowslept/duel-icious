@@ -32,7 +32,7 @@ export class NavBar extends Component {
       <div style={navBar}>
         <div style={navigation}>
           <img src={logo} style={logoStyle} alt="logo" />
-          <Link className="link"
+          <Link className="link hide-sm"
             to="/"
           >
             Duel-icious web application

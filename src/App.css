@@ -22,12 +22,12 @@
   animation: blinker 1.5s linear infinite;
 }
 
-@keyframes blinker {  
+@keyframes blinker {
   50% { opacity: 0; }
 }
 
 .container {
-  display: 'flex';
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -35,4 +35,23 @@
 
 .table {
   width: 100%;
+}
+
+@media (max-width: 600px) {
+  .hide-sm {
+    display: none;
+  }
+
+  .card {
+    width: 100% !important;
+  }
+}
+
+.legend {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.card {
+  width: 25%;
 }

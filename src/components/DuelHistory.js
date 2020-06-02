@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 const duelHistory = {
   display: 'flex',
   flexWrap: 'wrap',
+  justifyContent: 'space-between',
 };
 
 const card = {
-  width: '25%',
   border: '1px solid #282c34',
   borderRadius: '5px',
   padding: '1rem',
@@ -39,7 +39,7 @@ export class DuelHistory extends Component {
         <strong>Duels history:</strong>
         <div style={duelHistory}>
           {characters.map((character, index) => (
-            <div style={card} key={index}>
+            <div className="card" style={card} key={index}>
               <div style={duelDetail}>
                 <div style={characterDesc}>
                   <strong>{ character.leftCharacter.name }</strong>
