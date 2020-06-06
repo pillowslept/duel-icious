@@ -2,25 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import '../styles/NavBar.scss';
 import logo from '../logo.svg';
-
-const navBar = {
-  padding: '0.8rem',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  backgroundColor: '#282c34',
-  color: 'white',
-};
-
-const logoStyle = {
-  width: '50px',
-};
-
-const navigation = {
-  display: 'flex',
-  alignItems: 'center',
-};
 
 export class NavBar extends Component {
   render() {
@@ -29,16 +12,16 @@ export class NavBar extends Component {
     const duelsClass = (!specialitiesClass && !charactersClass && !this.props.duelHistory.length) ? 'blink' : '';
 
     return (
-      <div style={navBar}>
-        <div style={navigation}>
-          <img src={logo} style={logoStyle} alt="logo" />
+      <div className="nav-bar">
+        <div className="navigation">
+          <img src={logo} className="logo" alt="logo" />
           <Link className="link hide-sm"
             to="/"
           >
             Duel-icious web application
           </Link>
         </div>
-        <div style={navigation}>
+        <div className="navigation">
           <Link
             className={ 'link ' + specialitiesClass }
             to="/specialities"

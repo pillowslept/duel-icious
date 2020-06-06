@@ -21,7 +21,7 @@ const card = {
 const duelDetail = {
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center',
+  alignItems: 'flex-start',
 };
 
 const characterDesc = {

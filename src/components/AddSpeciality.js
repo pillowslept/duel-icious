@@ -20,8 +20,12 @@ export class AddSpeciality extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event, field) {
-    this.setState({ [field]: event.target.value });
+  handleChange(event, field, type = 'number') {
+    let value = event.target.value;
+    if (type === 'number') {
+      value = Number(value);
+    }
+    this.setState({ [field]: value });
   }
 
   add() {
@@ -48,7 +52,7 @@ export class AddSpeciality extends Component {
           <input
             type="text"
             value={this.state.name}
-            onChange={(event) => this.handleChange(event, 'name')}
+            onChange={(event) => this.handleChange(event, 'name', 'string')}
           />
         </div>
         <div>

@@ -12,18 +12,10 @@
   color: white;
   text-decoration: none;
   margin-left: 1rem;
-}
 
-.link:hover {
-  text-decoration: underline;
-}
-
-.blink {
-  animation: blinker 1.5s linear infinite;
-}
-
-@keyframes blinker {
-  50% { opacity: 0; }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .container {
@@ -54,4 +46,8 @@
 
 .card {
   width: 25%;
+}
+
+.small {
+  font-size: 13px;
 }

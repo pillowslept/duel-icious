@@ -15,7 +15,7 @@ export class Home extends Component {
     return (
       <div style={result}>
         <strong>Welcome to Duel-icious web application</strong>
-        <strong>You can do the next things:</strong>
+        <strong>You can do the following things:</strong>
         <ul style={list}>
           <li>
             Configure new specialities

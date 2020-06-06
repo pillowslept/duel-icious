@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addCharacter } from '../actions';
+import { addCharacter, incrementCharacterId } from '../actions';
 
 export class AddCharacter extends Component {
 
@@ -11,7 +11,6 @@ export class AddCharacter extends Component {
     this.state = {
       name: '',
       speciality: '',
-      id: 1,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -21,8 +20,9 @@ export class AddCharacter extends Component {
   }
 
   add() {
-    this.props.addCharacter({ ...this.state });
-    this.setState({ name: '', speciality: '', id: this.state.id + 1 });
+    this.props.addCharacter({ ...this.state, id: this.props.incremental.character });
+    this.setState({ name: '', speciality: '' });
+    this.props.incrementCharacterId();
   }
 
   render() {
@@ -70,18 +70,22 @@ export class AddCharacter extends Component {
 
 AddCharacter.propTypes = {
   specialities: PropTypes.array,
+  incremental: PropTypes.object,
   addCharacter: PropTypes.func,
+  incrementCharacterId: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
   return {
     specialities: state.specialities,
+    incremental: state.incremental,
   };
 };
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     addCharacter: addCharacter,
+    incrementCharacterId: incrementCharacterId,
   }, dispatch);
 };
 

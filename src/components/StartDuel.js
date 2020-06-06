@@ -25,15 +25,16 @@ export class StartDuel extends Component {
     return (
       <div className="character-list">
         <strong>Select two oponents to start a duel:</strong>
-        {characters.map((character, index) => (
-          <div className="character" key={index}>
+        {characters.map((character) => (
+          <div className="character" key={character.id}>
             <input
-              id={'checkbox_' + index}
+              disabled={this.props.duel.progress}
+              id={'checkbox_' + character.id}
               checked={character.selected}
               onChange={(event) => this.handleChange(event, character)}
               type="checkbox"
             />
-            <label htmlFor={'checkbox_' + index}>
+            <label htmlFor={ 'checkbox_' + character.id }>
               <strong>{ character.name }</strong> - <span>{ character.speciality }</span>
             </label>
           </div>
@@ -50,6 +51,7 @@ export class StartDuel extends Component {
 
 StartDuel.propTypes = {
   characters: PropTypes.array,
+  duel: PropTypes.object,
   startDuel: PropTypes.func,
   updateCharacter: PropTypes.func,
 };
@@ -57,6 +59,7 @@ StartDuel.propTypes = {
 const mapStateToProps = (state) => {
   return {
     characters: state.characters,
+    duel: state.duel,
   };
 };
 

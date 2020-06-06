@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addDuelWinner, finishDuel } from '../actions';
+import { addDuelWinner, clearDuel } from '../actions';
 
 const duelStyle = {
   display: 'flex',
@@ -13,7 +13,6 @@ const description = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  border: '1 px solid #282c34'
 };
 
 const vs = {
@@ -30,46 +29,45 @@ const result = {
 
 export class Duel extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      showResult: false,
-      winner: '',
-    };
-  }
-
   showResults() {
     const { leftCharacter, rightCharacter } = this.props.duel;
     const winner = Math.round(Math.random()) === 1 ? leftCharacter.name : rightCharacter.name;
-    this.setState({ showResult: true, winner });
     this.props.addDuelWinner({ winner, ...this.props.duel });
-    this.props.finishDuel();
+    this.props.clearDuel();
   }
 
   render() {
-    const { leftCharacter = {}, rightCharacter = {} } = this.props.duel || {};
+    const { leftCharacter = {}, rightCharacter = {}, progress } = this.props.duel || {};
 
     return (
       <div>
         <strong>Actual duel:</strong>
         <div style={duelStyle}>
           <div style={description}>
-            <strong>{ leftCharacter.name }</strong>
+            <strong>{ leftCharacter.name || 'Not selected' }</strong>
             <span>{ leftCharacter.speciality }</span>
           </div>
           <div style={vs}>--- VS ---</div>
           <div style={description}>
-            <strong>{ rightCharacter.name }</strong>
+            <strong>{ rightCharacter.name || 'Not selected' }</strong>
             <span>{ rightCharacter.speciality }</span>
           </div>
         </div>
-        <div style={result}>
-          <strong>
-            And the winner is ...
-          </strong>
-          { leftCharacter.id ? <button onClick={() => this.showResults()}>Show results</button> : '' }
-          { this.state.showResult ? <strong>{ this.state.winner }</strong> : '' }
-        </div>
+        { progress ?
+          <div style={result}>
+            <strong>
+              And the winner is ...
+            </strong>
+            { leftCharacter.id ?
+              <div>
+                <button onClick={() => this.showResults()}>Show results</button>
+                <button onClick={() => this.props.clearDuel()}>Cancel</button>
+              </div>
+              : ''
+            }
+          </div>
+          : ''
+        }
       </div>
     );
   }
@@ -78,7 +76,7 @@ export class Duel extends Component {
 Duel.propTypes = {
   duel: PropTypes.object,
   addDuelWinner: PropTypes.func,
-  finishDuel: PropTypes.func,
+  clearDuel: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -90,7 +88,7 @@ const mapStateToProps = (state) => {
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     addDuelWinner: addDuelWinner,
-    finishDuel: finishDuel,
+    clearDuel: clearDuel,
   }, dispatch);
 };
 

@@ -29,6 +29,10 @@ export class SpecialityList extends Component {
             ))}
           </tbody>
         </table>
+        { specialities.length ?
+          <i className="small">Total: { specialities.length }</i>
+          : ''
+        }
       </div>
     );
   }

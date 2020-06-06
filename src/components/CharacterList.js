@@ -25,6 +25,10 @@ export class CharacterList extends Component {
             ))}
           </tbody>
         </table>
+        { characters.length ?
+          <i className="small">Total: { characters.length }</i>
+          : ''
+        }
       </div>
     );
   }

@@ -26,9 +26,9 @@ export const startDuel = (leftCharacter, rightCharacter) => {
   };
 };
 
-export const finishDuel = () => {
+export const clearDuel = () => {
   return {
-    type: 'FINISH_DUEL',
+    type: 'CLEAR_DUEL',
   };
 };
 
@@ -45,5 +45,19 @@ export const addSpeciality = (speciality) => {
   return {
     type: 'ADD_SPECIALITY',
     payload: speciality
+  };
+};
+
+// INCREMENTAL IDS
+
+export const incrementCharacterId = () => {
+  return {
+    type: 'INCREMENT_CHARACTER_ID',
+  };
+};
+
+export const incrementSpecialityId = () => {
+  return {
+    type: 'INCREMENT_SPECIALITY_ID',
   };
 };
