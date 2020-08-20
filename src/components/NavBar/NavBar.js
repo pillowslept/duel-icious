@@ -10,7 +10,7 @@ import {
   OptionsContainer,
 } from './NavBar.css';
 
-export class NavBar extends Component {
+class NavBar extends Component {
   render() {
     const hasSpeciality = !this.props.specialities.length ? 1 : 0;
     const hasCharacter = (!hasSpeciality && !this.props.characters.length) ? 1 : 0;

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { startDuel, updateCharacter } from '../actions';
+import { startDuel, updateCharacter } from '../../actions';
 
-export class StartDuel extends Component {
+class StartDuel extends Component {
 
   handleChange(event, character) {
     const selected = event.target.checked;

@@ -1,6 +1,6 @@
 import React from 'react';
-import AddSpeciality from 'components/AddSpeciality';
-import SpecialityList from 'components/SpecialityList';
+import AddSpeciality from 'components/AddSpeciality/AddSpeciality';
+import SpecialityList from 'components/SpecialityList/SpecialityList';
 
 const Specialities = () => {
   return (

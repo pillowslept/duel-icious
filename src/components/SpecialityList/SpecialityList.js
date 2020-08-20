@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {
+  Table,
+} from 'components/Styled/Table.css';
 
-export class SpecialityList extends Component {
+class SpecialityList extends Component {
   render() {
     const specialities = this.props.specialities || [];
 
     return (
       <div className="list">
         <strong>Available specialities:</strong>
-        <table className="table">
+        <Table>
           <thead>
             <tr>
               <th>Name</th>
@@ -28,10 +31,9 @@ export class SpecialityList extends Component {
               </tr>
             ))}
           </tbody>
-        </table>
-        { specialities.length ?
+        </Table>
+        { specialities.length &&
           <i className="small">Total: { specialities.length }</i>
-          : ''
         }
       </div>
     );

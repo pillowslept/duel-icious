@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addSpeciality as add } from '../actions';
+import { addSpeciality as add } from '../../actions';
+import {
+  FlexContainer,
+} from 'components/Styled/Container.css';
 
-export class AddSpeciality extends Component {
+class AddSpeciality extends Component {
 
   constructor() {
     super();
@@ -46,7 +49,11 @@ export class AddSpeciality extends Component {
 
   render() {
     return (
-      <div className="container">
+      <FlexContainer
+        align="center"
+        column
+        justifyContent="center"
+      >
         <div>
           <label><strong>Name: </strong></label>
           <input
@@ -93,7 +100,7 @@ export class AddSpeciality extends Component {
           Add
         </button>
         <span className="legend">* Min: { this.state.min } - Max: { this.state.max }</span>
-      </div>
+      </FlexContainer>
     );
   }
 }

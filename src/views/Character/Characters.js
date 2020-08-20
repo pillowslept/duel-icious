@@ -1,6 +1,6 @@
 import React from 'react';
-import AddCharacter from 'components/AddCharacter';
-import CharacterList from 'components/CharacterList';
+import AddCharacter from 'components/AddCharacter/AddCharacter';
+import CharacterList from 'components/CharacterList/CharacterList';
 
 const Characters = () => {
   return (

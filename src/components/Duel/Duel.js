@@ -2,32 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addDuelWinner, clearDuel } from '../actions';
+import { addDuelWinner, clearDuel } from '../../actions';
+import {
+  Container,
+  Description,
+  Result,
+  Versus,
+} from './Duel.css';
 
-const duelStyle = {
-  display: 'flex',
-  justifyContent: 'space-evenly',
-};
-
-const description = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-};
-
-const vs = {
-  display: 'flex',
-  alignItems: 'center',
-};
-
-const result = {
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-};
-
-export class Duel extends Component {
+class Duel extends Component {
 
   showResults() {
     const { leftCharacter, rightCharacter } = this.props.duel;
@@ -40,35 +23,33 @@ export class Duel extends Component {
     const { leftCharacter = {}, rightCharacter = {}, progress } = this.props.duel || {};
 
     return (
-      <div>
+      <>
         <strong>Actual duel:</strong>
-        <div style={duelStyle}>
-          <div style={description}>
+        <Container>
+          <Description>
             <strong>{ leftCharacter.name || 'Not selected' }</strong>
             <span>{ leftCharacter.speciality }</span>
-          </div>
-          <div style={vs}>--- VS ---</div>
-          <div style={description}>
+          </Description>
+          <Versus>--- VS ---</Versus>
+          <Description>
             <strong>{ rightCharacter.name || 'Not selected' }</strong>
             <span>{ rightCharacter.speciality }</span>
-          </div>
-        </div>
-        { progress ?
-          <div style={result}>
+          </Description>
+        </Container>
+        { progress &&
+          <Result>
             <strong>
               And the winner is ...
             </strong>
-            { leftCharacter.id ?
+            { leftCharacter.id &&
               <div>
                 <button onClick={() => this.showResults()}>Show results</button>
                 <button onClick={() => this.props.clearDuel()}>Cancel</button>
               </div>
-              : ''
             }
-          </div>
-          : ''
+          </Result>
         }
-      </div>
+      </>
     );
   }
 }

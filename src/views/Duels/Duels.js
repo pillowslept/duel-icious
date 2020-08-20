@@ -1,6 +1,6 @@
 import React from 'react';
-import StartDuel from 'components/StartDuel';
-import Duel from 'components/Duel';
+import StartDuel from 'components/StartDuel/StartDuel';
+import Duel from 'components/Duel/Duel';
 import DuelHistory from 'components/DuelHistory/DuelHistory';
 
 const Duels = () => {

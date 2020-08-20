@@ -7,28 +7,6 @@
   font-size: calc(10px + 2vmin);
 }
 
-.link {
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  margin-left: 1rem;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.table {
-  width: 100%;
-}
-
 @media (max-width: 600px) {
   .hide-sm {
     display: none;

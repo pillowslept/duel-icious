@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addCharacter, incrementCharacterId } from '../actions';
+import { addCharacter, incrementCharacterId } from '../../actions';
+import {
+  FlexContainer,
+} from 'components/Styled/Container.css';
 
-export class AddCharacter extends Component {
+class AddCharacter extends Component {
 
   constructor() {
     super();
@@ -29,7 +32,11 @@ export class AddCharacter extends Component {
     const specialities = this.props.specialities || [];
 
     return (
-      <div className="container">
+      <FlexContainer
+        align="center"
+        column
+        justifyContent="center"
+      >
         <div>
           <label><strong>Name: </strong></label>
           <input
@@ -63,7 +70,7 @@ export class AddCharacter extends Component {
         >
           Add
         </button>
-      </div>
+      </FlexContainer>
     );
   }
 }

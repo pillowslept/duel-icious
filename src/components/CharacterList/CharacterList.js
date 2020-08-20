@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {
+  Table,
+} from 'components/Styled/Table.css';
 
-export class CharacterList extends Component {
+class CharacterList extends Component {
   render() {
     const characters = this.props.characters || [];
 
     return (
       <div className="list">
         <strong>Actual characters:</strong>
-        <table className="table">
+        <Table>
           <thead>
             <tr>
               <th>Name</th>
@@ -18,16 +21,17 @@ export class CharacterList extends Component {
           </thead>
           <tbody>
             {characters.map((speciality, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+              >
                 <td>{ speciality.name }</td>
                 <td>{ speciality.speciality }</td>
               </tr>
             ))}
           </tbody>
-        </table>
-        { characters.length ?
+        </Table>
+        { characters.length &&
           <i className="small">Total: { characters.length }</i>
-          : ''
         }
       </div>
     );
