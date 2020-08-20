@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import StartDuel from 'components/StartDuel';
 import Duel from 'components/Duel';
-import DuelHistory from 'components/DuelHistory';
+import DuelHistory from 'components/DuelHistory/DuelHistory';
 
-export class Duels extends Component {
-  render() {
-    return (
-      <div>
-        <StartDuel />
-        <hr />
-        <Duel />
-        <hr />
-        <DuelHistory />
-      </div>
-    );
-  }
-}
+const Duels = () => {
+  return (
+    <div>
+      <StartDuel />
+      <hr />
+      <Duel />
+      <hr />
+      <DuelHistory />
+    </div>
+  );
+};
 
 export default Duels;
