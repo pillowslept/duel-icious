@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AddCharacter from '../components/AddCharacter';
-import CharacterList from '../components/CharacterList';
+import AddCharacter from 'components/AddCharacter';
+import CharacterList from 'components/CharacterList';
 
 export class Characters extends Component {
   render() {

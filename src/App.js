@@ -2,10 +2,10 @@ import React from 'react';
 import './App.scss';
 import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Characters } from './views/Characters';
-import { Specialities } from './views/Specialities';
-import { Duels } from './views/Duels';
-import { Home } from './views/Home';
+import { Characters } from './views/Character/Characters';
+import { Specialities } from './views/Specialities/Specialities';
+import { Duels } from './views/Duels/Duels';
+import { Home } from './views/Home/Home';
 
 function App() {
   return (

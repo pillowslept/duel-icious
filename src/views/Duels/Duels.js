@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import StartDuel from '../components/StartDuel';
-import Duel from '../components/Duel';
-import DuelHistory from '../components/DuelHistory';
+import StartDuel from 'components/StartDuel';
+import Duel from 'components/Duel';
+import DuelHistory from 'components/DuelHistory';
 
 export class Duels extends Component {
   render() {
