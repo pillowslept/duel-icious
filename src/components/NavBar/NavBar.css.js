@@ -37,6 +37,12 @@ export const BlinkLink = styled(Link)`
   ${({ blink }) => blink && css`
     animation: ${blinkingEffect} 1.5s linear infinite;
   `}
+
+  ${({ hide }) => hide && css`
+    @media (max-width: 600px) {
+      display: none;
+    }
+  `}
 `;
 
 export const LogoImg = styled.img`

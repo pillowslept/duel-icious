@@ -21,7 +21,7 @@ class NavBar extends Component {
         <OptionsContainer>
           <LogoImg src={logo} alt="logo" />
           <BlinkLink
-            className="hide-sm"
+            hide={1}
             to="/"
           >
             Duel-icious web application

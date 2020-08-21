@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   Table,
+  Counter,
 } from 'components/Styled/Table.css';
 
 class SpecialityList extends Component {
@@ -32,9 +33,7 @@ class SpecialityList extends Component {
             ))}
           </tbody>
         </Table>
-        { specialities.length &&
-          <i className="small">Total: { specialities.length }</i>
-        }
+        <Counter>Total: { specialities.length }</Counter>
       </div>
     );
   }

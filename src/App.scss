@@ -6,18 +6,3 @@
   padding: 2rem;
   font-size: calc(10px + 2vmin);
 }
-
-@media (max-width: 600px) {
-  .hide-sm {
-    display: none;
-  }
-}
-
-.legend {
-  font-size: 12px;
-  font-style: italic;
-}
-
-.small {
-  font-size: 13px;
-}

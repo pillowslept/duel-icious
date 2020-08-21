@@ -6,6 +6,9 @@ import { addSpeciality as add } from '../../actions';
 import {
   FlexContainer,
 } from 'components/Styled/Container.css';
+import {
+  Legend,
+} from 'components/Styled/Common.css';
 
 class AddSpeciality extends Component {
 
@@ -99,7 +102,9 @@ class AddSpeciality extends Component {
         >
           Add
         </button>
-        <span className="legend">* Min: { this.state.min } - Max: { this.state.max }</span>
+        <Legend>
+          * Min: { this.state.min } - Max: { this.state.max }
+        </Legend>
       </FlexContainer>
     );
   }
