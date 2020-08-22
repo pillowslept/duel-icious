@@ -1,9 +1,22 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+export const CardContainer = styled.div`
+  display: grid;
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const Character = styled.div`
@@ -25,15 +38,8 @@ export const DescriptionContainer = styled.div`
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 25%;
   border: 1px solid #282c34;
   border-radius: 5px;
   padding: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-
-  @media (max-width: 600px) {
-    width: 100%;
-  }
 `;
 

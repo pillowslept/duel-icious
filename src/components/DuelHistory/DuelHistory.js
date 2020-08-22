@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  Container,
+  CardContainer,
   Card,
   Character,
   Title,
@@ -16,7 +16,7 @@ class DuelHistory extends Component {
     return (
       <>
         <Title>Duels history:</Title>
-        <Container>
+        <CardContainer>
           {characters.map((character, index) => (
             <Card
               key={index}
@@ -38,7 +38,7 @@ class DuelHistory extends Component {
               </div>
             </Card>
           ))}
-        </Container>
+        </CardContainer>
       </>
     );
   }
