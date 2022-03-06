@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addCharacter, incrementCharacterId } from '../../actions';
-import {
-  FlexContainer,
-} from 'components/Styled/Container.css';
+import { FlexContainer } from 'components/Styled/Container.css';
+import { Button } from 'components/Styled/Common.css';
 
 class AddCharacter extends Component {
 
@@ -63,13 +62,13 @@ class AddCharacter extends Component {
             ))}
           </select>
         </div>
-        <button
+        <Button
           disabled={!this.state.name || !this.state.speciality}
           onClick={() => this.add()}
           type="button"
         >
           Add
-        </button>
+        </Button>
       </FlexContainer>
     );
   }
@@ -84,8 +83,8 @@ AddCharacter.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    specialities: state.specialities,
     incremental: state.incremental,
+    specialities: state.specialities,
   };
 };
 

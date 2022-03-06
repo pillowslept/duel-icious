@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { startDuel, updateCharacter } from '../../actions';
 
+import { Button } from 'components/Styled/Common.css';
+
 class StartDuel extends Component {
 
   handleChange(event, character) {
@@ -24,7 +26,7 @@ class StartDuel extends Component {
 
     return (
       <div className="character-list">
-        <strong>Select two oponents to start a duel:</strong>
+        <strong>Select two opponents to start a duel:</strong>
         {characters.map((character) => (
           <div className="character" key={character.id}>
             <input
@@ -41,7 +43,7 @@ class StartDuel extends Component {
         ))}
         {characters.length > 1 ?
           <div>
-            <button onClick={() => this.startDuel()} disabled={!allowBtn}>Start duel</button>
+            <Button onClick={() => this.startDuel()} disabled={!allowBtn}>Start duel</Button>
           </div>
           : ''}
       </div>

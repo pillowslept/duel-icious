@@ -9,6 +9,7 @@ import {
   Result,
   Versus,
 } from './Duel.css';
+import { Button } from 'components/Styled/Common.css';
 
 class Duel extends Component {
 
@@ -24,7 +25,7 @@ class Duel extends Component {
 
     return (
       <>
-        <strong>Actual duel:</strong>
+        <strong>Duel in progress:</strong>
         <Container>
           <Description>
             <strong>{ leftCharacter.name || 'Not selected' }</strong>
@@ -43,8 +44,13 @@ class Duel extends Component {
             </strong>
             { leftCharacter.id &&
               <div>
-                <button onClick={() => this.showResults()}>Show results</button>
-                <button onClick={() => this.props.clearDuel()}>Cancel</button>
+                <Button onClick={() => this.showResults()}>Show results</Button>
+                <Button
+                  isCancel
+                  onClick={() => this.props.clearDuel()}
+                >
+                  Cancel
+                </Button>
               </div>
             }
           </Result>

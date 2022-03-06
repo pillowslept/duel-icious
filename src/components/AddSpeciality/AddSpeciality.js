@@ -8,6 +8,7 @@ import {
 } from 'components/Styled/Container.css';
 import {
   Legend,
+  Button,
 } from 'components/Styled/Common.css';
 
 class AddSpeciality extends Component {
@@ -95,13 +96,13 @@ class AddSpeciality extends Component {
             onChange={(event) => this.handleChange(event, 'resistance')}
           />
         </div>
-        <button
+        <Button
           disabled={!this.isValidForm()}
           onClick={() => this.add()}
           type="button"
         >
           Add
-        </button>
+        </Button>
         <Legend>
           * Min: { this.state.min } - Max: { this.state.max }
         </Legend>
