@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addCharacter, incrementCharacterId } from '../../actions';
+import { addCharacter } from '../../actions';
 import { FlexContainer } from 'components/Styled/Container.css';
 import { Button } from 'components/Styled/Common.css';
 
@@ -24,7 +24,6 @@ class AddCharacter extends Component {
   add() {
     this.props.addCharacter({ ...this.state, id: this.props.incremental.character });
     this.setState({ name: '', speciality: '' });
-    this.props.incrementCharacterId();
   }
 
   render() {
@@ -78,7 +77,6 @@ AddCharacter.propTypes = {
   specialities: PropTypes.array,
   incremental: PropTypes.object,
   addCharacter: PropTypes.func,
-  incrementCharacterId: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -91,7 +89,6 @@ const mapStateToProps = (state) => {
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     addCharacter: addCharacter,
-    incrementCharacterId: incrementCharacterId,
   }, dispatch);
 };
 

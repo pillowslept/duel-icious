@@ -47,17 +47,3 @@ export const addSpeciality = (speciality) => {
     payload: speciality
   };
 };
-
-// INCREMENTAL IDS
-
-export const incrementCharacterId = () => {
-  return {
-    type: 'INCREMENT_CHARACTER_ID',
-  };
-};
-
-export const incrementSpecialityId = () => {
-  return {
-    type: 'INCREMENT_SPECIALITY_ID',
-  };
-};

@@ -2,27 +2,43 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addSpeciality } from '../../actions';
+import {
+  addSpeciality,
+  addCharacter,
+} from '../../actions';
 import {
   FlexContainer,
 } from 'components/Styled/Container.css';
 import {
   Separator,
 } from './Randomize.css';
+import { Button } from 'components/Styled/Common.css';
 
-const specialities = ['Warrior', 'Paladin', 'Mage', 'Hunter'];
+const specialities = [
+  { name: 'Warrior', characters: [{ name: 'Kelv' }] },
+  { name: 'Paladin', characters: [{ name: 'Aldar' }] },
+  { name: 'Mage', characters: [{ name: 'Ello' }] },
+  { name: 'Hunter', characters: [{ name: 'Tyrathan' }, { name: 'Vidar' }] },
+];
 const generateNumber = () => Math.floor(Math.random() * 100);
 
-class AddCharacter extends Component {
+class Randomize extends Component {
 
   randomize() {
-    for (const name of specialities) {
+    for (const speciality of specialities) {
       this.props.addSpeciality({
-        name,
+        name: speciality.name,
         velocity: generateNumber(),
         power: generateNumber(),
         resistance: generateNumber(),
       });
+
+      for (const character of speciality.characters) {
+        this.props.addCharacter({
+          name: character.name,
+          speciality: speciality.name,
+        });
+      }
     }
   }
 
@@ -39,21 +55,22 @@ class AddCharacter extends Component {
         <strong>Psssssss!!!</strong>
         <span>Wanna try randomized data?</span>
         <div>
-          <button
+          <Button
             onClick={() => this.randomize()}
             type="button"
           >
             Randomize
-          </button>
+          </Button>
         </div>
       </FlexContainer>
     );
   }
 }
 
-AddCharacter.propTypes = {
-  specialities: PropTypes.array,
+Randomize.propTypes = {
   addSpeciality: PropTypes.func,
+  addCharacter: PropTypes.func,
+  specialities: PropTypes.array,
 };
 
 const mapStateToProps = (state) => {
@@ -65,7 +82,8 @@ const mapStateToProps = (state) => {
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     addSpeciality: addSpeciality,
+    addCharacter: addCharacter,
   }, dispatch);
 };
 
-export default connect(mapStateToProps, matchDispatchToProps)(AddCharacter);
+export default connect(mapStateToProps, matchDispatchToProps)(Randomize);
