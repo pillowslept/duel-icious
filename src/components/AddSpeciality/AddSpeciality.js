@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addSpeciality as add } from '../../actions';
+import { FlexContainer } from 'components/Styled/Container.css';
 import {
-  FlexContainer,
-} from 'components/Styled/Container.css';
-import {
-  Legend,
   Button,
+  Input,
+  Label,
+  Legend,
+  Row,
 } from 'components/Styled/Common.css';
 
 class AddSpeciality extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -58,51 +58,53 @@ class AddSpeciality extends Component {
         column
         justifyContent="center"
       >
-        <div>
-          <label><strong>Name: </strong></label>
-          <input
+        <Row>
+          <Label>Name:</Label>
+          <Input
             type="text"
             value={this.state.name}
             onChange={(event) => this.handleChange(event, 'name', 'string')}
           />
-        </div>
-        <div>
-          <label><strong>Velocity*: </strong></label>
-          <input
+        </Row>
+        <Row>
+          <Label>Velocity*:</Label>
+          <Input
             type="number"
             min={this.state.min}
             max={this.state.max}
             value={this.state.velocity}
             onChange={(event) => this.handleChange(event, 'velocity')}
           />
-        </div>
-        <div>
-          <label><strong>Power*: </strong></label>
-          <input
+        </Row>
+        <Row>
+          <Label>Power*:</Label>
+          <Input
             type="number"
             min={this.state.min}
             max={this.state.max}
             value={this.state.power}
             onChange={(event) => this.handleChange(event, 'power')}
           />
-        </div>
-        <div>
-          <label><strong>Resistance*: </strong></label>
-          <input
+        </Row>
+        <Row>
+          <Label>Resistance*:</Label>
+          <Input
             type="number"
             min={this.state.min}
             max={this.state.max}
             value={this.state.resistance}
             onChange={(event) => this.handleChange(event, 'resistance')}
           />
-        </div>
-        <Button
-          disabled={!this.isValidForm()}
-          onClick={() => this.add()}
-          type="button"
-        >
-          Add
-        </Button>
+        </Row>
+        <Row>
+          <Button
+            disabled={!this.isValidForm()}
+            onClick={() => this.add()}
+            type="button"
+          >
+            Add
+          </Button>
+        </Row>
         <Legend>
           * Min: { this.state.min } - Max: { this.state.max }
         </Legend>

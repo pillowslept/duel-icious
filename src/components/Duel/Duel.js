@@ -9,7 +9,10 @@ import {
   Result,
   Versus,
 } from './Duel.css';
-import { Button } from 'components/Styled/Common.css';
+import {
+  Button,
+  Row,
+} from 'components/Styled/Common.css';
 
 class Duel extends Component {
 
@@ -37,13 +40,11 @@ class Duel extends Component {
             <span>{ rightCharacter.speciality }</span>
           </Description>
         </Container>
-        { progress &&
+        {progress &&
           <Result>
-            <strong>
-              And the winner is ...
-            </strong>
-            { leftCharacter.id &&
-              <div>
+            <Row><strong>And the winner is ...</strong></Row>
+            {(leftCharacter.id && rightCharacter.id) && (
+              <Row>
                 <Button onClick={() => this.showResults()}>Show results</Button>
                 <Button
                   isCancel
@@ -51,8 +52,8 @@ class Duel extends Component {
                 >
                   Cancel
                 </Button>
-              </div>
-            }
+              </Row>
+            )}
           </Result>
         }
       </>

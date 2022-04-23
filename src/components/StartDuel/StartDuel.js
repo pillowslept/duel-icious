@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { startDuel, updateCharacter } from '../../actions';
 
-import { Button } from 'components/Styled/Common.css';
+import {
+  Button,
+  Row,
+} from 'components/Styled/Common.css';
 
 class StartDuel extends Component {
 
@@ -25,28 +28,30 @@ class StartDuel extends Component {
     const allowBtn = characters.filter(({ selected }) => selected).length === 2;
 
     return (
-      <div className="character-list">
-        <strong>Select two opponents to start a duel:</strong>
-        {characters.map((character) => (
-          <div className="character" key={character.id}>
-            <input
-              disabled={this.props.duel.progress}
-              id={'checkbox_' + character.id}
-              checked={character.selected}
-              onChange={(event) => this.handleChange(event, character)}
-              type="checkbox"
-            />
-            <label htmlFor={ 'checkbox_' + character.id }>
-              <strong>{ character.name }</strong> - <span>{ character.speciality }</span>
-            </label>
-          </div>
-        ))}
-        {characters.length > 1 ?
-          <div>
+      <Fragment>
+        <Row>
+          <strong>Select two opponents to start a duel:</strong>
+          {characters.map((character) => (
+            <div className="character" key={character.id}>
+              <input
+                disabled={this.props.duel.progress}
+                id={'checkbox_' + character.id}
+                checked={character.selected}
+                onChange={(event) => this.handleChange(event, character)}
+                type="checkbox"
+              />
+              <label htmlFor={ 'checkbox_' + character.id }>
+                <strong>{ character.name }</strong> - <span>{ character.speciality }</span>
+              </label>
+            </div>
+          ))}
+        </Row>
+        {characters.length > 1 && (
+          <Row>
             <Button onClick={() => this.startDuel()} disabled={!allowBtn}>Start duel</Button>
-          </div>
-          : ''}
-      </div>
+          </Row>
+        )}
+      </Fragment>
     );
   }
 }

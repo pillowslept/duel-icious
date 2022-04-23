@@ -4,10 +4,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addCharacter } from '../../actions';
 import { FlexContainer } from 'components/Styled/Container.css';
-import { Button } from 'components/Styled/Common.css';
+import {
+  Button,
+  Input,
+  Label,
+  Row,
+} from 'components/Styled/Common.css';
 
 class AddCharacter extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -35,16 +39,16 @@ class AddCharacter extends Component {
         column
         justifyContent="center"
       >
-        <div>
-          <label><strong>Name: </strong></label>
-          <input
+        <Row>
+          <Label>Name:</Label>
+          <Input
             type="text"
             value={this.state.name}
             onChange={(event) => this.handleChange(event, 'name')}
           />
-        </div>
-        <div>
-          <label><strong>Speciality: </strong></label>
+        </Row>
+        <Row>
+          <Label>Speciality:</Label>
           <select value={this.state.speciality} onChange={(event) => this.handleChange(event, 'speciality')}>
             <option
               value={''}
@@ -60,14 +64,16 @@ class AddCharacter extends Component {
               </option>
             ))}
           </select>
-        </div>
-        <Button
-          disabled={!this.state.name || !this.state.speciality}
-          onClick={() => this.add()}
-          type="button"
-        >
-          Add
-        </Button>
+        </Row>
+        <Row>
+          <Button
+            disabled={!this.state.name || !this.state.speciality}
+            onClick={() => this.add()}
+            type="button"
+          >
+            Add
+          </Button>
+        </Row>
       </FlexContainer>
     );
   }
