@@ -6,12 +6,8 @@ import {
   addSpeciality,
   addCharacter,
 } from '../../actions';
-import {
-  FlexContainer,
-} from 'components/Styled/Container.css';
-import {
-  Separator,
-} from './Randomize.css';
+import { FlexContainer } from 'components/Styled/Container.css';
+import { Separator } from './Randomize.css';
 import { Button } from 'components/Styled/Common.css';
 
 const specialities = [
