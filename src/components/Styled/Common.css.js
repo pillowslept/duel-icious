@@ -1,38 +1,62 @@
 import styled, { css } from 'styled-components';
 
 export const Legend = styled.span`
-  font-size: 12px;
+  font-size: 0.75rem;
   font-style: italic;
 `;
 
-export const Button = styled.button`
-  box-shadow: inset 0px 1px 0px 0px #ffffff;
-  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-  background-color: #ffffff;
-  border-radius: 6px;
-  border: 1px solid #dcdcdc;
-  display: inline-block;
-  cursor: pointer;
-  color: #666666;
-  font-family: Arial;
-  font-size: 15px;
+export const Label = styled.label`
+  margin-right: 0.5rem;
   font-weight: bold;
-  padding: 6px 24px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #ffffff;
-  outline-color: #dcdcdc;
+`;
 
-  &:hover {
-    background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-    background-color: #f6f6f6;
+export const Row = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+export const Input = styled.input`
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.5rem;
+  border: solid 0.0625rem gray;
+
+  &:active, &:focus {
+    outline: none !important;
+    border-color: #22A7F0;
+    box-shadow: 0 0 0.625rem #22A7F0;
   }
+`;
 
-  &:active {
-    position: relative;
-    top: 1px;
-  }
+export const Button = styled.button`
+  font-size: 0.9375rem;
+  color: #22A7F0;
+  outline: 0;
+  border: 0;
+  background: none;
+  padding: 0.3rem 2.5rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  border: 0.125rem solid #22A7F0;
+  transition: all 0.3s ease;
 
-  &:disabled {
+  ${({ disabled }) => !disabled && css`
+    &:hover, &:active {
+      background-color: #22A7F0;
+      color: #FFF;
+    }
+  `}
+
+  ${({ disabled }) => disabled && css`
     cursor: not-allowed;
-  }
+  `}
+
+  ${({ isCancel }) => isCancel && css`
+    margin-left: 0.5rem;
+    color: #F62459;
+    border-color: #F62459;
+
+    &:hover, &:active {
+      background-color: #F62459;
+      color: #FFF;
+    }
+  `}
 `;
